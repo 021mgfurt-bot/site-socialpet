@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Hero } from "../sections/Hero";
+import { InstallSpotlight } from "../sections/InstallSpotlight";
 import { ProblemToSocialPet } from "../sections/ProblemToSocialPet";
 import { Vaccination } from "../sections/Vaccination";
 import { PlaceholderSection } from "../sections/PlaceholderSection";
@@ -24,6 +25,7 @@ export function Home() {
   return (
     <>
       <Hero />
+      <InstallSpotlight />
       <ProblemToSocialPet />
       <Vaccination />
       {HOME_SECTIONS.map((section) => (
