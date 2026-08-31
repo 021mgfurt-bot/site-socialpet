@@ -8,16 +8,46 @@
 }
 
 .icon {
-  width: 28px;
-  height: 28px;
+  /* Tamanho intrínseco (44px) evita distorcer a proporção original do
+     asset em qualquer breakpoint — só a exibição encolhe via CSS. */
+  width: 32px;
+  height: 32px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .wordmark {
   font-family: var(--font-body);
-  font-size: 1.125rem;
+  font-size: 1.1875rem;
   font-weight: 600;
   letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+@media (min-width: 600px) {
+  .logo {
+    gap: var(--space-12);
+  }
+
+  .icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .wordmark {
+    font-size: 1.3125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .wordmark {
+    font-size: 1.5rem;
+  }
 }
 
 .logo:focus-visible {
