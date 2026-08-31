@@ -162,7 +162,7 @@
   }
 
   .visualBlock {
-    --frame-width: 260px;
+    --frame-width: 240px;
     order: 0;
     flex: 0 1 40%;
     justify-content: flex-end;
@@ -176,7 +176,7 @@
 
 @media (min-width: 1440px) {
   .visualBlock {
-    --frame-width: 280px;
+    --frame-width: 260px;
   }
 }
 
@@ -188,7 +188,7 @@
   }
 
   .visualBlock {
-    --frame-width: 320px;
+    --frame-width: 290px;
     flex: 0 1 46%;
   }
 }
