@@ -1,0 +1,194 @@
+/* Espaçamento Header → Hero: causa estrutural corrigida (não margin-top
+   negativo). O antigo --section-padding-y-hero (até 192px de cada lado)
+   criava um vazio artificial enorme abaixo do header sticky. Aqui o topo é
+   deliberadamente enxuto — o header e a headline devem parecer parte da
+   mesma composição — e o fundo mantém respiro editorial normal. Sem
+   min-height:100vh: a altura nasce do próprio conteúdo, nunca sobra vazio
+   artificial nem fica espremido. */
+.heroSection {
+  padding-top: var(--space-24);
+  padding-bottom: var(--space-48);
+}
+
+@media (min-width: 768px) {
+  .heroSection {
+    padding-top: var(--space-32);
+    padding-bottom: var(--space-64);
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroSection {
+    padding-top: var(--space-40);
+    padding-bottom: var(--space-64);
+  }
+}
+
+@media (min-width: 1440px) {
+  .heroSection {
+    padding-top: var(--space-48);
+    padding-bottom: var(--space-96);
+  }
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-48);
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-24);
+  text-align: center;
+  width: 100%;
+  max-width: 560px;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-display-xl);
+  line-height: var(--line-height-display);
+  letter-spacing: -0.01em;
+  color: var(--color-text-strong);
+}
+
+.copy {
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  line-height: var(--line-height-body);
+  color: var(--color-text-muted);
+  max-width: 42ch;
+}
+
+.ctas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+  width: 100%;
+}
+
+.ctas > a[href] {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* Mobile: o mockup vem DEPOIS do texto (headline → copy → CTA → mockup).
+   Testado contra "mockup primeiro" (Prompt 5 §7): num mockup em tamanho de
+   leitura confortável em 320-430px, ocupar a tela sozinho empurra a
+   headline pra fora do viewport — pior pra clareza da marca. */
+.visualBlock {
+  /* --frame-width vive aqui (não em .mockup): .sceneStage é irmã de
+     .mockup, então a variável precisa estar num ancestral comum pra ambas
+     lerem o mesmo valor — declarada só em .mockup, .sceneStage a via como
+     inexistente e colapsava pra tamanho zero (bug real do 3D "sumindo"
+     encontrado na revisão visual deste ajuste). */
+  --frame-width: 168px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  order: -1;
+  isolation: isolate;
+}
+
+@media (min-width: 400px) {
+  .visualBlock {
+    --frame-width: 190px;
+  }
+}
+
+@media (min-width: 600px) {
+  .visualBlock {
+    --frame-width: 230px;
+  }
+}
+
+/* Camada 3D: deliberadamente maior que o mockup e deslocada (não
+   centralizada nele) — profundidade e assimetria de verdade, não um halo
+   atrás do aparelho (Prompt "correção do Hero" §16-18). */
+.sceneStage {
+  position: absolute;
+  width: calc(var(--frame-width, 230px) * 1.9);
+  aspect-ratio: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translate(-4%, -10%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mockup {
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-32);
+    text-align: left;
+  }
+
+  .textBlock {
+    align-items: flex-start;
+    text-align: left;
+    flex: 0 1 56%;
+    max-width: none;
+    margin-top: var(--space-24);
+  }
+
+  .copy {
+    max-width: 38ch;
+  }
+
+  .ctas {
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+  }
+
+  .ctas > a[href] {
+    width: auto;
+    max-width: none;
+  }
+
+  .visualBlock {
+    --frame-width: 260px;
+    order: 0;
+    flex: 0 1 40%;
+    justify-content: flex-end;
+    margin-top: var(--space-16);
+  }
+
+  .mockup {
+    transform: rotate(3deg);
+  }
+}
+
+@media (min-width: 1440px) {
+  .visualBlock {
+    --frame-width: 280px;
+  }
+}
+
+/* Ultrawide: usa o espaço extra de verdade em vez de deixar a composição
+   pequena e perdida (Prompt 5 §13). */
+@media (min-width: 1920px) {
+  .textBlock {
+    flex: 0 1 48%;
+  }
+
+  .visualBlock {
+    --frame-width: 320px;
+    flex: 0 1 46%;
+  }
+}
