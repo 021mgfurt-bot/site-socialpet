@@ -1,0 +1,30 @@
+.heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--color-text-strong);
+  line-height: var(--line-height-display);
+  letter-spacing: -0.01em;
+}
+
+.displayXl {
+  font-size: var(--text-display-xl);
+}
+
+.displayLg {
+  font-size: var(--text-display-lg);
+}
+
+.h1 {
+  font-size: var(--text-h1);
+  line-height: var(--line-height-heading);
+}
+
+.h2 {
+  font-size: var(--text-h2);
+  line-height: var(--line-height-heading);
+}
+
+.h3 {
+  font-size: var(--text-h3);
+  line-height: var(--line-height-heading);
+}

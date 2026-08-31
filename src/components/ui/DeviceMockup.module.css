@@ -1,0 +1,66 @@
+.frame {
+  /* Fallback só se ninguém prover --frame-width lá de cima — nunca declarar
+     um valor fixo aqui de novo: um valor próprio neste seletor teria
+     prioridade sobre o herdado do ancestral (Hero.module.css/.visualBlock),
+     travando o tamanho do mockup no mesmo valor em todo breakpoint (bug
+     real encontrado na revisão visual deste ajuste). */
+  position: relative;
+  width: var(--frame-width, 300px);
+  max-width: 100%;
+  aspect-ratio: 9 / 19.5;
+  border-radius: calc(var(--frame-width, 300px) * 0.16);
+  padding: calc(var(--frame-width, 300px) * 0.022);
+  background: linear-gradient(155deg, #3a3a3d 0%, #1c1c1f 45%, #0f0f11 100%);
+  box-shadow:
+    0 30px 60px -18px rgba(50, 43, 41, 0.35),
+    0 10px 24px -8px rgba(50, 43, 41, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.16),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+}
+
+.screen {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  border-radius: calc(var(--frame-width, 300px) * 0.14);
+  overflow: hidden;
+  background: var(--color-cream-paper);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
+.dynamicIsland {
+  position: absolute;
+  top: calc(var(--frame-width, 300px) * 0.03);
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(var(--frame-width, 300px) * 0.27);
+  height: calc(var(--frame-width, 300px) * 0.075);
+  border-radius: var(--radius-pill);
+  background: #0a0a0a;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.1),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.sideButtonLeft,
+.sideButtonRight {
+  position: absolute;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #4a4a4d, #1a1a1c);
+}
+
+.sideButtonLeft {
+  left: -2px;
+  top: 18%;
+  height: 9%;
+}
+
+.sideButtonRight {
+  right: -2px;
+  top: 14%;
+  height: 6%;
+}

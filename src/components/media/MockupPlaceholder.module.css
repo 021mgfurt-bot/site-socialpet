@@ -1,0 +1,13 @@
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 30% 20%, rgba(245, 124, 85, 0.16), transparent 55%), var(--color-cream-paper);
+}
+
+.glyph {
+  width: 30%;
+  color: rgba(168, 69, 31, 0.22);
+}

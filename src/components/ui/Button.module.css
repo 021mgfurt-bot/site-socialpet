@@ -1,0 +1,92 @@
+.button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  min-height: var(--touch-target-min);
+  padding: var(--space-12) var(--space-24);
+  border-radius: var(--radius-pill);
+  border: 1.5px solid transparent;
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform var(--motion-fast) var(--ease-enter),
+    box-shadow var(--motion-fast) var(--ease-enter),
+    background-color var(--motion-fast) var(--ease-enter),
+    border-color var(--motion-fast) var(--ease-enter);
+}
+
+/* Varredura de brilho sutil — mesma assinatura do botão do app SocialPet,
+   nunca um glow/neon. */
+.button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.32) 48%, transparent 76%);
+  transform: translateX(-125%);
+  transition: transform var(--motion-slow) var(--ease-enter);
+  pointer-events: none;
+}
+
+.button:hover:not(:disabled)::after,
+.button:focus-visible::after {
+  transform: translateX(125%);
+}
+
+.button > * {
+  position: relative;
+  z-index: 2;
+}
+
+.primary {
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--color-cta-bg-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+.primary:active:not(:disabled) {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: none;
+}
+
+.secondary {
+  background: transparent;
+  color: var(--color-text-strong);
+  border-color: var(--color-border);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--color-bg-alt);
+  transform: translateY(-2px);
+}
+
+.secondary:active:not(:disabled) {
+  transform: translateY(1px) scale(0.97);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-coral-deep);
+  outline-offset: 3px;
+}
+
+.button:disabled,
+.button[aria-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
