@@ -1,0 +1,129 @@
+.page {
+  padding-block: var(--space-64);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-48);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  max-width: 720px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-h1);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-strong);
+}
+
+.summary {
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-body);
+}
+
+.reviewNotice {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--color-warning);
+  background: rgba(173, 107, 0, 0.1);
+  border: 1px solid rgba(173, 107, 0, 0.3);
+  border-radius: var(--radius-sm);
+  padding: var(--space-12) var(--space-16);
+  max-width: fit-content;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+}
+
+.toc {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-16);
+  max-width: 720px;
+}
+
+.tocTitle {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--color-muted);
+  margin-bottom: var(--space-8);
+}
+
+.toc ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.toc a {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.toc a:hover,
+.toc a:focus-visible {
+  color: var(--color-coral-deep);
+}
+
+.content {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+}
+
+.content h2 {
+  font-family: var(--font-body);
+  font-size: var(--text-h2-ui);
+  font-weight: 600;
+  color: var(--color-text-strong);
+  scroll-margin-top: 96px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding-top: var(--space-24);
+  border-top: 1px solid var(--color-border);
+  max-width: 720px;
+}
+
+.contact p {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 1024px) {
+  .body {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-48);
+  }
+
+  .toc {
+    position: sticky;
+    top: 112px;
+    flex: 0 0 220px;
+  }
+}

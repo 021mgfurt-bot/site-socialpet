@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>SocialPet — a vida do seu pet, organizada com cuidado</title>
+    <meta
+      name="description"
+      content="Vacinas, despesas, agenda e memórias de cada pet reunidas em um só lugar. Conheça o SocialPet."
+    />
+    <!-- canonical, og:url e robots são injetados em build time por
+         vite.seo.plugin.ts, a partir de VITE_SITE_URL — ver FONTS.md/README
+         para como configurar. Sem essa variável, o plugin injeta
+         noindex/nofollow em vez de qualquer URL de domínio adivinhada. -->
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+
+    <!-- Switzer agora é self-hosted (src/styles/fonts.css) — ver FONTS.md.
+         Nenhuma requisição a domínio externo de fontes acontece mais. -->
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SocialPet" />
+    <meta property="og:title" content="SocialPet — a vida do seu pet, organizada com cuidado" />
+    <meta
+      property="og:description"
+      content="Vacinas, despesas, agenda e memórias de cada pet reunidas em um só lugar."
+    />
+    <meta property="og:locale" content="pt_BR" />
+    <!-- PENDÊNCIA: sem imagem social (og:image) definitiva ainda — nenhuma
+         imagem foi inventada para preencher o espaço, ver Prompt 1 §33/38. -->
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="SocialPet — a vida do seu pet, organizada com cuidado" />
+    <meta
+      name="twitter:description"
+      content="Vacinas, despesas, agenda e memórias de cada pet reunidas em um só lugar."
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
