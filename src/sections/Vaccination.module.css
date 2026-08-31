@@ -1,0 +1,153 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-16);
+  max-width: 640px;
+  margin-bottom: var(--space-48);
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-strong);
+  /* Token compartilhado (--text-h1) em vez de clamp próprio — mesma
+     hierarquia/escala usada nas páginas legais, deliberadamente menor
+     que o Hero (--text-display-xl). */
+  font-size: var(--text-h1);
+  letter-spacing: var(--tracking-heading);
+}
+
+.copy {
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  line-height: var(--line-height-body);
+  color: var(--color-text-muted);
+  max-width: 56ch;
+}
+
+.showcase {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-48);
+}
+
+.statusStack {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.statusEntry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-block: var(--space-16);
+  border-top: 1px solid var(--color-border);
+  border-left: 3px solid transparent;
+  padding-left: var(--space-16);
+  will-change: transform, opacity;
+}
+
+.statusEntry:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.statusLabel {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-h2);
+  line-height: 1.1;
+  letter-spacing: var(--tracking-heading);
+}
+
+.statusMeta {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+}
+
+.tone-ok {
+  border-left-color: var(--color-success);
+}
+.tone-ok .statusLabel {
+  color: var(--color-success);
+}
+
+.tone-soon {
+  border-left-color: var(--color-warning);
+}
+.tone-soon .statusLabel {
+  color: var(--color-warning);
+}
+
+.tone-overdue {
+  border-left-color: var(--color-danger);
+}
+.tone-overdue .statusLabel {
+  color: var(--color-danger);
+}
+
+.mockupWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.mockup {
+  --frame-width: 220px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .headline,
+  .copy,
+  .mockupWrap,
+  .statusEntry {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .showcase {
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    gap: var(--space-48);
+    align-items: center;
+  }
+
+  .statusStack {
+    order: 0;
+  }
+
+  .mockupWrap {
+    order: 1;
+    justify-content: flex-end;
+  }
+
+  .mockup {
+    --frame-width: 240px;
+    transform: rotate(-2deg);
+  }
+}
+
+@media (min-width: 1440px) {
+  .mockup {
+    --frame-width: 260px;
+  }
+
+  .showcase {
+    gap: var(--space-64);
+  }
+}
+
+@media (min-width: 1920px) {
+  .showcase {
+    grid-template-columns: 1fr 0.7fr;
+  }
+
+  .mockup {
+    --frame-width: 290px;
+  }
+}
