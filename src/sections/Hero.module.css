@@ -50,10 +50,10 @@
 
 .headline {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: var(--weight-display);
   font-size: var(--text-display-xl);
   line-height: var(--line-height-display);
-  letter-spacing: -0.01em;
+  letter-spacing: var(--tracking-display);
   color: var(--color-text-strong);
 }
 

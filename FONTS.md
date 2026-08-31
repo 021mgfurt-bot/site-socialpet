@@ -1,19 +1,52 @@
 # Tipografia — estado
 
-Decisão congelada (Prompt 3): **Instrument Serif** (display) + **Switzer** (corpo/UI).
+Decisão atual (substitui a decisão do Prompt 3/Prompt 5, registrada abaixo
+para histórico): **Inter** — mesma família usada pela aplicação real
+(`legacy/styles.css`, `:root`: `font-family: Inter, ui-rounded, "Segoe UI",
+system-ui, -apple-system, BlinkMacSystemFont, sans-serif;`). Uma família só
+para todo o site; a hierarquia editorial vem de escala, peso e tracking
+(`--weight-*`/`--tracking-*` em `src/styles/tokens.css`), não de misturar
+famílias diferentes.
 
-## Instrument Serif — resolvido
+## Inter — resolvido
 
-- Fonte: pacote `@fontsource/instrument-serif` (npm), licença **OFL-1.1**, confirmada via `npm view @fontsource/instrument-serif license`.
-- Self-hosted: os arquivos `.woff2`/`.woff` ficam em `node_modules/@fontsource/instrument-serif` e são importados por `src/styles/fonts.css`.
-- Peso disponível: 400 (regular e itálico). É o único peso necessário — a Instrument Serif é usada só em display/headline.
+- Fonte variável, pacote `@fontsource-variable/inter` (npm), licença
+  **OFL-1.1**.
+- Self-hosted: um único import (`@import "@fontsource-variable/inter/wght.css";`
+  em `src/styles/fonts.css`) cobre todo o eixo de peso (100–900) — troca a
+  necessidade de múltiplos arquivos por peso (como Switzer exigia) por um
+  arquivo por subset de caracteres.
+- Só o subset "latin" é de fato baixado em runtime: todo o alfabeto
+  acentuado do português (á, ã, ç, é, ê, í, ó, õ, ú...) cabe em Latin-1
+  (U+0000–00FF), coberto pelo subset "latin". Os subsets cyrillic/greek/
+  vietnamese declarados no CSS do pacote nunca são requisitados pelo
+  navegador porque nenhum texto do site usa esses intervalos Unicode —
+  comportamento nativo de `@font-face`+`unicode-range`, confirmado via
+  captura de Network (só `inter-latin-wght-normal.woff2`, ~48KB, uma
+  requisição).
+- A aplicação real **não** hospeda a própria fonte (depende do Inter do
+  sistema, com fallback para `ui-rounded`/`system-ui`); o site hospeda o
+  arquivo de verdade para garantir a mesma tipografia em qualquer máquina,
+  já que aqui a fonte carrega via `<link>`/`@import` em vez de depender de
+  instalação local.
 
-## Switzer — resolvido no Prompt 5
+## Regra permanente (atualizada)
 
-- **Licença confirmada por fonte oficial**: a própria API pública da Fontshare (`https://api.fontshare.com/v2/fonts?q=switzer`) retorna, para a Switzer, `"license_type": "itf_ffl"` — ITF Free Font License, da Indian Type Foundry (publicadora oficial da fonte, também listada como tal na resposta da API). É uma licença gratuita para uso pessoal e comercial, incluindo incorporação em site — não uma relicenciação de terceiro não verificada (diferente do pacote não-oficial `@carrot-kpi/switzer-font` no npm, que segue **não sendo usado** por essa razão).
-- **Self-hosted**: os arquivos `.woff2` dos pesos 400, 500 e 600 foram baixados diretamente do CDN oficial da Fontshare (`cdn.fontshare.com`), pelas URLs retornadas pela própria API/CSS oficial deles (`api.fontshare.com/v2/css`) — não são cópia de um espelho de terceiros. Ficam em `src/assets/fonts/switzer/` e são declarados via `@font-face` em `src/styles/fonts.css`.
-- **Nenhuma requisição a domínio externo acontece mais em runtime** para carregar a tipografia do site — o `<link>` para `api.fontshare.com` foi removido de `index.html`. Isso também simplifica a Política de Cookies/Privacidade: não há mais nada a registrar sobre "fonte carregada de provedor externo" (ver Prompt 5 §20) — a ressalva ficou obsoleta porque o problema que ela documentava foi resolvido, não porque deixou de ser relevante.
+Não trocar Inter por outra família como solução definitiva sem antes
+reconfirmar, no código real da aplicação (`legacy/styles.css`), qual é a
+fonte oficial em uso — a decisão deste documento existe para acompanhar a
+aplicação, não para fixar uma preferência de design independente dela.
 
-## Regra permanente
+## Histórico — Instrument Serif + Switzer (Prompt 3–6, descontinuado)
 
-Nunca substituir Switzer por Inter, Poppins, Montserrat ou Roboto como solução definitiva. Se algum dia os arquivos precisarem ser atualizados (nova versão da fonte), repetir o mesmo processo: baixar do CDN oficial da Fontshare a partir da CSS oficial deles, nunca de um espelho de terceiro.
+Entre o Prompt 4 e o ajuste de tipografia que trouxe Inter para o site, a
+decisão tipográfica era **Instrument Serif** (display) + **Switzer**
+(corpo/UI) — duas famílias, cada uma self-hosted e com licença verificada
+na época (Instrument Serif via `@fontsource/instrument-serif`, OFL-1.1;
+Switzer via download direto do CDN oficial da Fontshare, licença ITF Free
+Font License). Essa decisão foi revertida porque o site passou a adotar a
+mesma tipografia da aplicação real (Inter) em vez de uma identidade
+editorial própria e desconectada da marca — ambos os pacotes/arquivos
+foram removidos do repositório (`@fontsource/instrument-serif` desinstalado,
+`src/assets/fonts/switzer/` apagado). Não restam imports, preloads ou
+menções ativas a nenhuma das duas em nenhum arquivo do site.

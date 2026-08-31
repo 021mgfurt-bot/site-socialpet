@@ -42,29 +42,52 @@
 
   --color-focus-ring: rgba(245, 124, 85, 0.55);
 
-  /* ---------- Tipografia: famílias ---------- */
-  --font-display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  --font-body: "Switzer", "Switzer Fallback", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", system-ui, sans-serif;
+  /* ---------- Tipografia: família ----------
+     Uma família só (Inter, self-hosted — ver src/styles/fonts.css),
+     a mesma da aplicação real. --font-display e --font-body continuam
+     como dois tokens porque muito CSS do site já referencia os dois
+     nomes para separar "papel editorial" de "papel de UI/corpo" — a
+     diferença entre eles agora vive nos tokens de peso e tracking abaixo,
+     não em família. */
+  --font-display: "Inter Variable", "Inter", ui-rounded, "Segoe UI", system-ui,
+    -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "Inter Variable", "Inter", ui-rounded, "Segoe UI", system-ui,
+    -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* ---------- Tipografia: peso ----------
+     A hierarquia editorial que antes vinha de trocar de família (serif vs
+     sans) agora vem de peso + tracking sobre a mesma fonte variável. */
+  --weight-display: 650;
+  --weight-heading: 600;
+  --weight-body-strong: 600;
+  --weight-body: 400;
+  --weight-quiet: 380;
 
   /* ---------- Tipografia: escala fluida ----------
-     clamp(mín, preferido, máx) calculado entre 400px e 1440px de viewport. */
-  --text-display-xl: clamp(2.5rem, 1.842rem + 2.632vw, 5rem);
-  --text-display-lg: clamp(2rem, 1.039rem + 3.846vw, 4.5rem);
-  --text-h1: clamp(1.75rem, 1.077rem + 2.692vw, 3.5rem);
-  --text-h2: clamp(1.375rem, 1.135rem + 0.962vw, 2rem);
-  --text-h2-ui: clamp(1.25rem, 1.106rem + 0.577vw, 1.625rem);
-  --text-h3: clamp(1.125rem, 0.981rem + 0.577vw, 1.5rem);
+     clamp(mín, preferido, máx) calculado entre 400px e 1440px de viewport.
+     Padronizada: cada nível de título usa um token daqui em vez de um
+     clamp próprio por seção, e a hierarquia Display XL > Display L > H1 >
+     H2 é sempre estritamente decrescente (versão anterior tinha Display L
+     maior que Display XL, invertido por engano). Corpo/small/label não
+     mudaram — só os tamanhos de título estavam grandes demais. */
+  --text-display-xl: clamp(2rem, 1.55rem + 1.8vw, 3.75rem);
+  --text-display-lg: clamp(1.875rem, 1.5rem + 1.5vw, 3.25rem);
+  --text-h1: clamp(1.625rem, 1.35rem + 1.1vw, 2.75rem);
+  --text-h2: clamp(1.375rem, 1.2rem + 0.7vw, 2rem);
+  --text-h2-ui: clamp(1.125rem, 1.05rem + 0.4vw, 1.5rem);
+  --text-h3: clamp(1.0625rem, 0.95rem + 0.4vw, 1.375rem);
   --text-body-lg: clamp(1.125rem, 1.029rem + 0.385vw, 1.375rem);
   --text-body: clamp(1rem, 0.952rem + 0.192vw, 1.125rem);
   --text-small: clamp(0.8125rem, 0.789rem + 0.096vw, 0.875rem);
   --text-label: clamp(0.8125rem, 0.764rem + 0.192vw, 0.9375rem);
 
-  --line-height-display: 1.05;
-  --line-height-heading: 1.15;
+  --line-height-display: 1.02;
+  --line-height-heading: 1.1;
   --line-height-body: 1.6;
   --line-height-tight: 1.3;
 
+  --tracking-display: -0.03em;
+  --tracking-heading: -0.02em;
   --tracking-label: 0.02em;
   --tracking-eyebrow: 0.08em;
 

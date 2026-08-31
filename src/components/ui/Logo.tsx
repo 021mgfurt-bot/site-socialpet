@@ -8,7 +8,7 @@ interface LogoProps {
 
 export function Logo({ className }: LogoProps) {
   return (
-    <Link to="/" className={`${styles.logo} ${className ?? ""}`} aria-label="SocialPet, ir para a página inicial">
+    <Link to="/" className={`${styles.logo} ${className ?? ""}`} aria-label="SocialPet — página inicial">
       <img src={pawIcon} alt="" className={styles.icon} width={44} height={44} />
       <span className={styles.wordmark}>SocialPet</span>
     </Link>

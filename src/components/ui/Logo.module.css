@@ -9,19 +9,34 @@
 
 .icon {
   /* Tamanho intrínseco (44px) evita distorcer a proporção original do
-     asset em qualquer breakpoint — só a exibição encolhe via CSS. */
-  width: 32px;
-  height: 32px;
+     asset em qualquer breakpoint — só a exibição encolhe via CSS.
+     border-radius corta a franja cinza/residual que sobra fora do
+     quadrado arredondado desenhado dentro do PNG oficial (o próprio
+     canvas de 192x192 não é 100% transparente fora da arte) — mesma
+     técnica que a aplicação real usa em `.brand-icon` (border-radius
+     direto no <img>, sem recriar o asset). A pata e o quadrado internos
+     não são tocados, só a borda externa do elemento é arredondada. */
+  width: 30px;
+  height: 30px;
+  border-radius: 22%;
   object-fit: contain;
   flex-shrink: 0;
 }
 
 .wordmark {
-  font-family: var(--font-body);
+  /* Mesma família da palavra "SocialPet" revelada na experiência
+     ScrollTrigger (ProblemToSocialPet) — a marca no Header precisa ser
+     reconhecível como a mesma identidade, só numa escala de wordmark
+     compacto, não uma cópia de tamanho. Peso alto + tracking negativo
+     porque a hierarquia agora vem de peso, não de família (fonte única
+     no site inteiro). */
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: normal;
   font-size: 1.1875rem;
-  font-weight: 600;
   letter-spacing: -0.01em;
-  line-height: 1;
+  line-height: 1.15;
+  padding-bottom: 0.05em;
 }
 
 @media (min-width: 600px) {
@@ -30,8 +45,8 @@
   }
 
   .icon {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
   }
 
   .wordmark {
@@ -41,8 +56,8 @@
 
 @media (min-width: 1024px) {
   .icon {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
   }
 
   .wordmark {

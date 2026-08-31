@@ -1,43 +1,19 @@
 /*
   Tipografia — SocialPet
 
-  Display: Instrument Serif — self-hosted via @fontsource/instrument-serif
-  (licença OFL-1.1, distribuição oficial via npm, arquivos woff2 locais).
+  Uma família só, para site e aplicação: Inter, self-hosted via
+  @fontsource-variable/inter (licença OFL-1.1, distribuição oficial via npm).
+  Confirmado no código real da aplicação (legacy/styles.css, `:root`):
+  `font-family: Inter, ui-rounded, "Segoe UI", system-ui, -apple-system,
+  BlinkMacSystemFont, sans-serif;` — a app não hospeda a fonte (depende do
+  Inter do sistema, se instalado); o site hospeda o arquivo de verdade para
+  garantir a mesma tipografia em qualquer máquina.
 
-  Corpo/UI: Switzer — self-hosted a partir desta pasta (src/assets/fonts/switzer).
-  Licença confirmada via a própria API pública da Fontshare
-  (api.fontshare.com/v2/fonts?q=switzer): `license_type: "itf_ffl"`
-  (ITF Free Font License, Indian Type Foundry, publicador oficial da fonte)
-  — gratuita para uso pessoal e comercial, incluindo embutir em site.
-  Os arquivos .woff2 foram baixados diretamente do CDN oficial deles
-  (cdn.fontshare.com), pelas URLs que a própria API/CSS oficial da
-  Fontshare retorna — não são cópia de terceiro. Ver FONTS.md.
+  Hierarquia entre Display/H1/H2/Body deixa de vir de família (não existe
+  mais uma serif "editorial" separada) e passa a vir de escala + peso +
+  tracking — só o eixo de peso variável (100–900) da fonte variável, um
+  único arquivo .woff2 por subset realmente usado (só "latin" é buscado de
+  verdade: todo o alfabeto acentuado do português cabe em Latin-1).
 */
 
-@import "@fontsource/instrument-serif/latin-400.css";
-@import "@fontsource/instrument-serif/latin-400-italic.css";
-@import "@fontsource/instrument-serif/latin-ext-400.css";
-
-@font-face {
-  font-family: "Switzer";
-  src: url("../assets/fonts/switzer/switzer-400.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Switzer";
-  src: url("../assets/fonts/switzer/switzer-500.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Switzer";
-  src: url("../assets/fonts/switzer/switzer-600.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
+@import "@fontsource-variable/inter/wght.css";

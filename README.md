@@ -35,7 +35,7 @@ src/
 
 ## Fontes
 
-Instrument Serif (display) e Switzer (corpo/UI) — ambas self-hosted, licenciamento documentado em [`FONTS.md`](./FONTS.md).
+Inter (única família, mesma da aplicação real) — self-hosted, licenciamento documentado em [`FONTS.md`](./FONTS.md).
 
 ## SEO por ambiente
 

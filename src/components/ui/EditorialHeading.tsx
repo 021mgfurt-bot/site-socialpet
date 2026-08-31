@@ -22,9 +22,9 @@ const sizeClassMap: Record<HeadingSize, string> = {
 };
 
 /**
- * Headline em Instrument Serif — reservada a momentos editoriais/emocionais
- * (ver Wireframe & Visual System §5). Nunca usada em componentes funcionais
- * (botão, badge, item de menu).
+ * Headline editorial em Inter (peso alto, tracking negativo) — reservada a
+ * momentos editoriais/emocionais (ver Wireframe & Visual System §5). Nunca
+ * usada em componentes funcionais (botão, badge, item de menu).
  */
 export function EditorialHeading({ level, size, id, className, children }: EditorialHeadingProps) {
   const Tag = level;
