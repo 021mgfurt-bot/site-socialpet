@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Hero } from "../sections/Hero";
+import { ProblemToSocialPet } from "../sections/ProblemToSocialPet";
 import { PlaceholderSection } from "../sections/PlaceholderSection";
 import { HOME_SECTIONS } from "../data/homeSections";
 import { useReducedMotion } from "../hooks/useReducedMotion";
@@ -22,6 +23,7 @@ export function Home() {
   return (
     <>
       <Hero />
+      <ProblemToSocialPet />
       {HOME_SECTIONS.map((section) => (
         <PlaceholderSection key={section.id} id={section.id} title={section.title} tone={section.tone} />
       ))}
