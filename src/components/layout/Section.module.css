@@ -2,6 +2,16 @@
   position: relative;
   padding-block: var(--section-padding-y);
   background: var(--color-bg);
+  /* O header é sticky e fica por cima do conteúdo — sem isso, clicar num
+     link de âncora ("Funcionalidades", "FAQ") deixa o título escondido
+     atrás da barra. */
+  scroll-margin-top: var(--header-height-mobile);
+}
+
+@media (min-width: 1024px) {
+  .section {
+    scroll-margin-top: var(--header-height-desktop);
+  }
 }
 
 .paper {

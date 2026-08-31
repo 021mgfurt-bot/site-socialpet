@@ -14,7 +14,15 @@ html {
 
 html,
 body {
-  overflow-x: hidden;
+  /* `overflow-x: hidden` força `overflow-y` a virar `auto` por
+     especificação do CSS (os dois eixos não podem ficar em modos
+     "misturados" visible/não-visible) — isso quebra `position: sticky` de
+     qualquer descendente (o header, neste caso) porque html/body passam a
+     contar como "scroll container" e disputam com o viewport real. Bug
+     real, presente desde o Prompt 4, só detectado agora ao testar scroll
+     profundo de verdade. `overflow-x: clip` bloqueia overflow horizontal
+     sem esse efeito colateral. */
+  overflow-x: clip;
 }
 
 body {
