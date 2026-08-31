@@ -33,7 +33,7 @@ export function Footer() {
         </nav>
 
         <div className={styles.column}>
-          <span className={styles.columnTitle}>Aplicação</span>
+          <span className={styles.columnTitle}>Aplicativo</span>
           <a className={styles.link} href={loginUrl} {...externalAppLinkProps}>
             Acessar o SocialPet
           </a>
