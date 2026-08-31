@@ -1,0 +1,17 @@
+.section {
+  position: relative;
+  padding-block: var(--section-padding-y);
+  background: var(--color-bg);
+}
+
+.paper {
+  background: var(--color-bg-alt);
+}
+
+.paddingHero {
+  padding-block: var(--section-padding-y-hero);
+}
+
+.paddingNone {
+  padding-block: 0;
+}

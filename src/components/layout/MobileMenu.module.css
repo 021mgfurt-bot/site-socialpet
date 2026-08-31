@@ -1,0 +1,100 @@
+.overlay {
+  position: fixed;
+  /* Começa abaixo do header em vez de cobrir a tela inteira: o header
+     (com o próprio botão, que já virou "X") continua visível e clicável
+     por cima do overlay — sem isso, não sobrava nenhuma forma visível de
+     fechar o menu no toque, só Escape (achado no teste visual deste
+     prompt). */
+  top: var(--header-height-mobile);
+  left: 0;
+  right: 0;
+  /* `bottom: 0` sozinho não estica a caixa de forma confiável em todo
+     motor de render testado — altura explícita é mais robusta. `dvh`
+     acompanha a barra de endereço do navegador mobile (Prompt 5 §10). */
+  height: calc(100vh - var(--header-height-mobile));
+  height: calc(100dvh - var(--header-height-mobile));
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-48);
+  padding: var(--space-32) var(--container-margin);
+  background: var(--color-cream-base);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity var(--motion-base) var(--ease-enter), transform var(--motion-base) var(--ease-enter),
+    visibility var(--motion-base);
+}
+
+.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+.navLink {
+  font-family: var(--font-body);
+  font-size: var(--text-h2-ui);
+  font-weight: 500;
+  color: var(--color-text-strong);
+  text-decoration: none;
+}
+
+.navLink:focus-visible {
+  outline: 2px solid var(--color-coral-deep);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.enterLink {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  min-height: var(--touch-target-min);
+  display: flex;
+  align-items: center;
+}
+
+.createLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-target-min);
+  padding: var(--space-12) var(--space-24);
+  border-radius: var(--radius-pill);
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.enterLink:focus-visible,
+.createLink:focus-visible {
+  outline: 2px solid var(--color-coral-deep);
+  outline-offset: 3px;
+}
+
+@media (min-width: 1024px) {
+  .overlay {
+    display: none;
+  }
+}
