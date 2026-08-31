@@ -47,7 +47,7 @@ export function Header({ variant = "full" }: HeaderProps) {
           <nav className={styles.nav} aria-label="Navegação principal">
             {NAV_LINKS.map((link) => (
               <Link key={link.label} to={link.to} className={styles.navLink}>
-                {link.label}
+                <span>{link.label}</span>
               </Link>
             ))}
           </nav>
@@ -55,7 +55,7 @@ export function Header({ variant = "full" }: HeaderProps) {
 
         <div className={styles.actions}>
           <a className={styles.enterLink} href={loginUrl} {...externalAppLinkProps}>
-            Entrar
+            <span>Entrar</span>
           </a>
           <Button href={signUpUrl} variant="primary" className={styles.desktopCta} {...externalAppLinkProps}>
             Criar minha conta
