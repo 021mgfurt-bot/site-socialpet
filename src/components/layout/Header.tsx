@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Logo } from "../ui/Logo";
 import { Button } from "../ui/Button";
 import { MobileMenu } from "./MobileMenu";
-import { loginUrl, signUpUrl } from "../../config/env";
+import { loginUrl, signUpUrl, externalAppLinkProps } from "../../config/env";
 import { NAV_LINKS } from "../../data/navLinks";
 import { cx } from "../../lib/classNames";
 import styles from "./Header.module.css";
@@ -54,13 +54,13 @@ export function Header({ variant = "full" }: HeaderProps) {
         )}
 
         <div className={styles.actions}>
-          <a className={styles.enterLink} href={loginUrl}>
+          <a className={styles.enterLink} href={loginUrl} {...externalAppLinkProps}>
             Entrar
           </a>
-          <Button href={signUpUrl} variant="primary" className={styles.desktopCta}>
+          <Button href={signUpUrl} variant="primary" className={styles.desktopCta} {...externalAppLinkProps}>
             Criar minha conta
           </Button>
-          <Button href={signUpUrl} variant="primary" className={styles.mobileCta}>
+          <Button href={signUpUrl} variant="primary" className={styles.mobileCta} {...externalAppLinkProps}>
             Criar conta
           </Button>
 

@@ -37,3 +37,16 @@ export const loginUrl = socialPetAppUrl;
 
 /** CTA "Criar minha conta" — hoje, mesma raiz da aplicação (ver nota acima). */
 export const signUpUrl = socialPetAppUrl;
+
+/**
+ * Props padrão para qualquer link que leve à aplicação real: sempre em
+ * nova aba, sempre com `rel` seguro. Centralizado aqui para não repetir
+ * (e arriscar esquecer) `target`/`rel` em cada CTA espalhado pelo site —
+ * Header, Hero, Footer, menu mobile e futuras seções usam o mesmo spread.
+ * Links internos do site (rotas, âncoras) nunca usam isto — continuam na
+ * mesma aba.
+ */
+export const externalAppLinkProps = {
+  target: "_blank",
+  rel: "noopener noreferrer",
+} as const;

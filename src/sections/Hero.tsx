@@ -10,7 +10,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 import { playHeroEntrance } from "../motion/heroEntrance";
 import { playHeroScrollExit } from "../motion/heroScrollExit";
 import { scrollToSection } from "../lib/scrollToSection";
-import { signUpUrl } from "../config/env";
+import { signUpUrl, externalAppLinkProps } from "../config/env";
 import styles from "./Hero.module.css";
 
 export function Hero() {
@@ -82,7 +82,7 @@ export function Hero() {
             </p>
 
             <div ref={ctasRef} className={styles.ctas}>
-              <Button href={signUpUrl} variant="primary">
+              <Button href={signUpUrl} variant="primary" {...externalAppLinkProps}>
                 Criar minha conta
               </Button>
               <TextLink onClick={handleSeeHowItWorks} withArrow>

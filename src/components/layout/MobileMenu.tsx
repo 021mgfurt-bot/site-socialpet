@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { NAV_LINKS } from "../../data/navLinks";
-import { loginUrl, signUpUrl } from "../../config/env";
+import { loginUrl, signUpUrl, externalAppLinkProps } from "../../config/env";
 import { useFocusTrap } from "../../hooks/useFocusTrap";
 import { useLockBodyScroll } from "../../hooks/useLockBodyScroll";
 import { cx } from "../../lib/classNames";
@@ -48,10 +48,10 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
       </nav>
 
       <div className={styles.actions}>
-        <a className={styles.enterLink} href={loginUrl} onClick={onClose}>
+        <a className={styles.enterLink} href={loginUrl} onClick={onClose} {...externalAppLinkProps}>
           Entrar
         </a>
-        <a className={styles.createLink} href={signUpUrl} onClick={onClose}>
+        <a className={styles.createLink} href={signUpUrl} onClick={onClose} {...externalAppLinkProps}>
           Criar minha conta
         </a>
       </div>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Logo } from "../ui/Logo";
 import { NAV_LINKS } from "../../data/navLinks";
-import { loginUrl, signUpUrl } from "../../config/env";
+import { loginUrl, signUpUrl, externalAppLinkProps } from "../../config/env";
 import styles from "./Footer.module.css";
 
 const LEGAL_LINKS = [
@@ -34,10 +34,10 @@ export function Footer() {
 
         <div className={styles.column}>
           <span className={styles.columnTitle}>Aplicação</span>
-          <a className={styles.link} href={loginUrl}>
+          <a className={styles.link} href={loginUrl} {...externalAppLinkProps}>
             Acessar o SocialPet
           </a>
-          <a className={styles.link} href={signUpUrl}>
+          <a className={styles.link} href={signUpUrl} {...externalAppLinkProps}>
             Criar minha conta
           </a>
         </div>
