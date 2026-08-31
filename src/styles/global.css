@@ -1,0 +1,118 @@
+@import "./tokens.css";
+@import "./fonts.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+/* Foco visível sempre — nunca remover outline globalmente.
+   Ajustamos a aparência, não a existência. */
+:focus-visible {
+  outline: 2px solid var(--color-coral-deep);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Elementos que gerenciam o próprio anel de foco (botões) usam box-shadow
+   em vez de outline para acompanhar o radius — ver Button.module.css. */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-16);
+  top: -100px;
+  z-index: 100;
+  background: var(--color-ink-deep);
+  color: var(--color-cream-base);
+  padding: var(--space-12) var(--space-16);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  transition: top var(--motion-fast) var(--ease-enter);
+}
+
+.skip-link:focus-visible {
+  top: var(--space-16);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

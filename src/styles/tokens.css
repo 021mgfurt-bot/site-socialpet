@@ -1,0 +1,149 @@
+/*
+  Design tokens — SocialPet (site institucional)
+  Fonte: Wireframe & Visual System (Prompt 3) e Blueprint Estratégico (Prompt 2).
+  Paleta base herdada da aplicação real; tokens marcados "extensão" são novos,
+  propostos para o site e ainda não usados no produto.
+*/
+
+:root {
+  /* ---------- Cor: base da marca (app real) ---------- */
+  --color-cream-base: #fffaf6;
+  --color-coral: #f57c55;
+  --color-coral-dark: #d95934;
+  --color-ink: #322b29;
+  --color-muted: #6f6259;
+  --color-line: #eadbd4;
+
+  /* ---------- Cor: extensões propostas para o site ---------- */
+  --color-cream-paper: #fbf1e8;
+  --color-coral-deep: #a8451f;
+  --color-ink-deep: #221c1a;
+  --color-sage: #7c8266;
+  --color-sand-deep: #c9ac8c;
+
+  /* ---------- Cor: estado (herdado do app) ---------- */
+  --color-success: #2f8f5b;
+  --color-warning: #8f5700;
+  --color-danger: #aa3e3e;
+
+  /* ---------- Cor: papéis semânticos ---------- */
+  --color-bg: var(--color-cream-base);
+  --color-bg-alt: var(--color-cream-paper);
+  --color-text: var(--color-ink);
+  --color-text-strong: var(--color-ink-deep);
+  --color-text-muted: var(--color-muted);
+  --color-border: var(--color-line);
+
+  /* CTA primário: fill escuro + texto claro garante contraste AA.
+     Nunca usar --color-coral puro como fundo com texto claro por cima. */
+  --color-cta-bg: var(--color-coral-deep);
+  --color-cta-bg-hover: #8f3a19;
+  --color-cta-text: var(--color-cream-base);
+
+  --color-focus-ring: rgba(245, 124, 85, 0.55);
+
+  /* ---------- Tipografia: famílias ---------- */
+  --font-display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-body: "Switzer", "Switzer Fallback", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", system-ui, sans-serif;
+
+  /* ---------- Tipografia: escala fluida ----------
+     clamp(mín, preferido, máx) calculado entre 400px e 1440px de viewport. */
+  --text-display-xl: clamp(2.5rem, 1.842rem + 2.632vw, 5rem);
+  --text-display-lg: clamp(2rem, 1.039rem + 3.846vw, 4.5rem);
+  --text-h1: clamp(1.75rem, 1.077rem + 2.692vw, 3.5rem);
+  --text-h2: clamp(1.375rem, 1.135rem + 0.962vw, 2rem);
+  --text-h2-ui: clamp(1.25rem, 1.106rem + 0.577vw, 1.625rem);
+  --text-h3: clamp(1.125rem, 0.981rem + 0.577vw, 1.5rem);
+  --text-body-lg: clamp(1.125rem, 1.029rem + 0.385vw, 1.375rem);
+  --text-body: clamp(1rem, 0.952rem + 0.192vw, 1.125rem);
+  --text-small: clamp(0.8125rem, 0.789rem + 0.096vw, 0.875rem);
+  --text-label: clamp(0.8125rem, 0.764rem + 0.192vw, 0.9375rem);
+
+  --line-height-display: 1.05;
+  --line-height-heading: 1.15;
+  --line-height-body: 1.6;
+  --line-height-tight: 1.3;
+
+  --tracking-label: 0.02em;
+  --tracking-eyebrow: 0.08em;
+
+  /* ---------- Espaçamento (base 4px) ---------- */
+  --space-4: 0.25rem;
+  --space-8: 0.5rem;
+  --space-12: 0.75rem;
+  --space-16: 1rem;
+  --space-24: 1.5rem;
+  --space-32: 2rem;
+  --space-48: 3rem;
+  --space-64: 4rem;
+  --space-96: 6rem;
+  --space-128: 8rem;
+  --space-160: 10rem;
+  --space-192: 12rem;
+
+  /* Padding vertical de seção — responde por breakpoint em global.css */
+  --section-padding-y: var(--space-64);
+  --section-padding-y-hero: var(--space-64);
+
+  /* ---------- Grid / container ---------- */
+  --container-max: 1320px;
+  --container-max-wide: 1440px;
+  --container-margin: 20px;
+  --grid-gutter: 16px;
+
+  /* ---------- Forma ---------- */
+  --radius-pill: 999px;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+
+  --shadow-soft: 0 18px 46px rgba(50, 43, 41, 0.12);
+  --shadow-lift: 0 10px 22px rgba(50, 43, 41, 0.14);
+
+  /* ---------- Motion ---------- */
+  --motion-fast: 200ms;
+  --motion-base: 400ms;
+  --motion-slow: 750ms;
+
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-organic: cubic-bezier(0.45, 0, 0.15, 1);
+
+  --touch-target-min: 44px;
+  --header-height-mobile: 76px;
+  --header-height-desktop: 84px;
+}
+
+/* Tablet portrait+ */
+@media (min-width: 768px) {
+  :root {
+    --container-margin: 40px;
+    --grid-gutter: 20px;
+  }
+}
+
+/* Tablet landscape+ */
+@media (min-width: 1024px) {
+  :root {
+    --container-margin: 56px;
+    --section-padding-y: var(--space-128);
+    --section-padding-y-hero: var(--space-160);
+  }
+}
+
+/* Notebook+ */
+@media (min-width: 1280px) {
+  :root {
+    --container-margin: 48px;
+  }
+}
+
+/* Desktop grande */
+@media (min-width: 1440px) {
+  :root {
+    --container-margin: 64px;
+    --section-padding-y: var(--space-160);
+    --section-padding-y-hero: var(--space-192);
+  }
+}
