@@ -1,0 +1,35 @@
+.photo {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lift);
+  border: 1px solid var(--color-border);
+  background-repeat: no-repeat;
+}
+
+.photoImg {
+  object-fit: cover;
+  display: block;
+}
+
+.tone-sand {
+  background-image: radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.5), transparent 55%),
+    linear-gradient(155deg, var(--color-sand-deep) 0%, var(--color-cream-paper) 100%);
+}
+
+/* Não faz gradiente até --color-cream-base: a seção usa tone="base" (fundo
+   cream-base), então terminar o degradê exatamente nessa cor faria a foto
+   "sumir" contra o fundo (achado real em QA visual, Prompt 10). */
+.tone-cream {
+  background-image: radial-gradient(circle at 70% 15%, rgba(255, 255, 255, 0.7), transparent 50%),
+    linear-gradient(160deg, var(--color-cream-paper) 0%, #f3ddc9 100%);
+}
+
+.tone-coral {
+  background-image: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.35), transparent 55%),
+    linear-gradient(155deg, var(--color-coral) 0%, var(--color-coral-dark) 100%);
+}
+
+.tone-ink {
+  background-image: radial-gradient(circle at 65% 20%, rgba(255, 255, 255, 0.18), transparent 55%),
+    linear-gradient(160deg, var(--color-muted) 0%, var(--color-ink) 100%);
+}

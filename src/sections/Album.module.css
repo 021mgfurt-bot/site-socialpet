@@ -1,0 +1,209 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-64);
+}
+
+.intro {
+  max-width: 640px;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  letter-spacing: var(--tracking-heading);
+  font-size: var(--text-display-lg);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-strong);
+  margin: 0;
+}
+
+/* ---------- Estágio de fotos ---------- */
+.stage {
+  display: flex;
+  flex-direction: column;
+}
+
+.photoCluster {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+}
+
+.photoLarge {
+  grid-column: 1 / 3;
+  aspect-ratio: 4 / 5;
+  will-change: transform, opacity;
+}
+
+.photoB {
+  grid-column: 1 / 2;
+  aspect-ratio: 1 / 1;
+  will-change: transform, opacity;
+}
+
+.photoC {
+  grid-column: 2 / 3;
+  aspect-ratio: 1 / 1;
+  will-change: transform, opacity;
+}
+
+/* A quarta foto só entra a partir do tablet (§41/§42: mobile fica com
+   headline + 1 grande + 2 menores, leve de propósito). */
+.photoD {
+  display: none;
+}
+
+.collection {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-8);
+  margin-top: var(--space-24);
+  will-change: transform, opacity;
+}
+
+.collectionPet {
+  font-family: var(--font-display);
+  font-weight: var(--weight-heading);
+  font-size: var(--text-h3);
+  color: var(--color-text-strong);
+}
+
+.collectionCount {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+/* ---------- Copy de apoio (depois das fotos, §41) ---------- */
+.copy {
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  line-height: var(--line-height-body);
+  color: var(--color-text-muted);
+  max-width: 56ch;
+  margin: 0;
+}
+
+/* ---------- Interface real / placeholder ---------- */
+.interfaceBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+  text-align: center;
+  will-change: transform, opacity;
+}
+
+.interfaceMockup {
+  --frame-width: 220px;
+}
+
+.actionsCopy {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+  max-width: 42ch;
+  margin: 0;
+}
+
+/* Estado inicial "escondido" só com motion liberado (Prompt 10 §68). */
+@media (prefers-reduced-motion: no-preference) {
+  .photoLarge,
+  .photoB,
+  .photoC,
+  .photoD,
+  .collection,
+  .interfaceBlock {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .stage {
+    position: relative;
+  }
+
+  .photoCluster {
+    display: block;
+    position: relative;
+    height: 0;
+    /* Reserva espaço pra foto grande (54% × 5/4 = 67.5%) mais a folga de
+       photoD "transbordando" por baixo dela (até ~80%, ver comentário
+       abaixo) — sem isso o container colapsa e o resto da seção sobe por
+       cima das fotos absolutamente posicionadas. */
+    padding-bottom: 84%;
+  }
+
+  /* Seletor repetido pra ganhar de `.photo { width: 100% }`
+     (PhotoPlaceholder.module.css) mesmo especificidade igual — a ordem de
+     injeção dos dois CSS Modules no bundle não é garantida, e sem isso o
+     `width: 100%` genérico às vezes vence e empilha as 4 fotos umas sobre
+     as outras, cada uma esticada pra largura inteira do estágio (achado
+     real em QA visual, Prompt 10.7). */
+  .photoLarge.photoLarge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 54%;
+  }
+
+  .photoB.photoB {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    aspect-ratio: 3 / 2;
+  }
+
+  .photoC.photoC {
+    position: absolute;
+    top: 24%;
+    right: 6%;
+    width: 22%;
+    aspect-ratio: 1 / 1;
+  }
+
+  /* `top`/`left` de um filho absoluto resolvem contra a altura/largura já
+     renderizadas do pai (não contra a % declarada no padding-bottom do
+     pai) — por isso os números aqui não "batem" ingenuamente com os da
+     foto grande. Calibrado visualmente pra photoD sobrepor só a metade
+     inferior de photoLarge e transbordar o resto pro chão vazio da
+     composição (efeito do §20, não uma segunda foto grande empilhada por
+     cima — achado real em QA visual: a versão anterior cobria quase toda
+     a foto grande). */
+  .photoD.photoD {
+    display: block;
+    position: absolute;
+    top: 60%;
+    left: 14%;
+    width: 22%;
+    aspect-ratio: 4 / 5;
+    transform: rotate(-3deg);
+    z-index: 2;
+  }
+
+  .collection {
+    margin-top: var(--space-32);
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    gap: var(--space-96);
+  }
+
+  .headline {
+    font-size: var(--text-display-xl);
+    max-width: 18ch;
+  }
+
+  .copy {
+    align-self: center;
+    text-align: center;
+  }
+
+  .interfaceBlock {
+    margin-top: var(--space-24);
+  }
+}

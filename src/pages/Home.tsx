@@ -6,6 +6,7 @@ import { ProblemToSocialPet } from "../sections/ProblemToSocialPet";
 import { Vaccination } from "../sections/Vaccination";
 import { Expenses } from "../sections/Expenses";
 import { Agenda } from "../sections/Agenda";
+import { Album } from "../sections/Album";
 import { PlaceholderSection } from "../sections/PlaceholderSection";
 import { HOME_SECTIONS } from "../data/homeSections";
 import { useReducedMotion } from "../hooks/useReducedMotion";
@@ -32,6 +33,7 @@ export function Home() {
       <Vaccination />
       <Expenses />
       <Agenda />
+      <Album />
       {HOME_SECTIONS.map((section) => (
         <PlaceholderSection key={section.id} id={section.id} title={section.title} tone={section.tone} />
       ))}
