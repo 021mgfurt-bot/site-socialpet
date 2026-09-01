@@ -1,0 +1,84 @@
+.item {
+  border-top: 1px solid var(--color-border);
+}
+
+.item:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.heading {
+  margin: 0;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+  width: 100%;
+  min-height: var(--touch-target-min);
+  padding-block: var(--space-16);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-strong);
+  font-size: var(--text-body-lg);
+  color: var(--color-text-strong);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-coral-deep);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.icon {
+  width: 9px;
+  height: 9px;
+  flex-shrink: 0;
+  border-right: 2px solid var(--color-text-muted);
+  border-bottom: 2px solid var(--color-text-muted);
+  transform: rotate(45deg);
+  transition: transform var(--motion-fast) var(--ease-enter);
+}
+
+.iconOpen {
+  transform: rotate(-135deg);
+}
+
+/* Grid-rows 0fr→1fr: anima a altura sem medir com JS e sem depender de
+   `height: auto` (que não é animável), e sem precisar de GSAP aqui —
+   único mecanismo do accordion, deliberadamente fora da timeline de
+   entrada da seção (Prompt 13 §31). */
+.panelWrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--motion-base) var(--ease-enter);
+}
+
+.panelWrapOpen {
+  grid-template-rows: 1fr;
+}
+
+.panelClip {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.panelInner {
+  margin: 0;
+  padding-bottom: var(--space-16);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panelWrap,
+  .icon {
+    transition-duration: 0.01ms;
+  }
+}
