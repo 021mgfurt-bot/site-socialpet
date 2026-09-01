@@ -200,6 +200,25 @@
   will-change: transform, opacity;
 }
 
+.reportRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-24);
+}
+
+/* Prova de produto secundária — pequena de propósito, ao lado da folha
+   editorial, não competindo com ela (Prompt 10.7 §43/§44: o iPhone
+   confirma que o relatório existe no app real, não vira o protagonista). */
+.reportPhone {
+  --frame-width: 130px;
+  flex-shrink: 0;
+}
+
+.reportPhoneMockup {
+  margin: 0 auto;
+}
+
 .sheet {
   width: 100%;
   max-width: 420px;
@@ -346,5 +365,11 @@
 
   .sheet {
     max-width: 480px;
+  }
+
+  .reportRow {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
   }
 }

@@ -1,6 +1,9 @@
 import { useEffect, useRef, type CSSProperties } from "react";
 import { Section } from "../components/layout/Section";
 import { Container } from "../components/ui/Container";
+import { DeviceMockup } from "../components/ui/DeviceMockup";
+import { ProductVideo } from "../components/media/ProductVideo";
+import { MockupPlaceholder } from "../components/media/MockupPlaceholder";
 import {
   EXPENSE_DEMO_RECORDS,
   EXPENSE_DEMO_PERIOD_LABEL,
@@ -164,7 +167,20 @@ export function Expenses() {
             </div>
 
             <div ref={reportRef} className={styles.reportStage}>
-              <ReportSheet total={total} count={EXPENSE_DEMO_RECORDS.length} pets={byPet.length} />
+              <div className={styles.reportRow}>
+                <ReportSheet total={total} count={EXPENSE_DEMO_RECORDS.length} pets={byPet.length} />
+                <div className={styles.reportPhone}>
+                  <DeviceMockup
+                    label="Tela real de despesas do SocialPet, na conta de demonstração"
+                    className={styles.reportPhoneMockup}
+                  >
+                    <ProductVideo
+                      poster="/product-demos/expenses/report-screen-mobile.png"
+                      fallback={<MockupPlaceholder />}
+                    />
+                  </DeviceMockup>
+                </div>
+              </div>
               <p className={styles.reportNote}>
                 Você pode guardar essa visão do período pra consultar depois, ou preparar o relatório para
                 impressão quando precisar.
