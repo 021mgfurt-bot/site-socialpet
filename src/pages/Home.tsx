@@ -5,6 +5,7 @@ import { InstallSpotlight } from "../sections/InstallSpotlight";
 import { ProblemToSocialPet } from "../sections/ProblemToSocialPet";
 import { Vaccination } from "../sections/Vaccination";
 import { Expenses } from "../sections/Expenses";
+import { Agenda } from "../sections/Agenda";
 import { PlaceholderSection } from "../sections/PlaceholderSection";
 import { HOME_SECTIONS } from "../data/homeSections";
 import { useReducedMotion } from "../hooks/useReducedMotion";
@@ -30,6 +31,7 @@ export function Home() {
       <ProblemToSocialPet />
       <Vaccination />
       <Expenses />
+      <Agenda />
       {HOME_SECTIONS.map((section) => (
         <PlaceholderSection key={section.id} id={section.id} title={section.title} tone={section.tone} />
       ))}
