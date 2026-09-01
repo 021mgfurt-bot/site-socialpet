@@ -9,14 +9,42 @@ const TARGET_FPS = 30;
  * `invalidate()`. Este componente dispara isso a ~30fps — suficiente para
  * um movimento tão lento, reduz custo de GPU/bateria em vez de renderizar
  * no refresh rate nativo do monitor.
+ *
+ * O loop só roda enquanto o canvas está de fato na viewport. Sem isso, ele
+ * continuava invalidando a ~30fps pra sempre depois que o Hero já tinha
+ * saído de vista — WebGL competindo com o ScrollTrigger das seções mais
+ * abaixo pelo mesmo thread principal, o suficiente pra causar o scroll
+ * "piscando"/travado relatado ao vivo em Vacinação (bug real, não uma
+ * mudança de comportamento do 3D em si).
  */
 function FrameRateLimiter() {
   const invalidate = useThree((state) => state.invalidate);
+  const gl = useThree((state) => state.gl);
 
   useEffect(() => {
-    const id = window.setInterval(() => invalidate(), 1000 / TARGET_FPS);
-    return () => window.clearInterval(id);
-  }, [invalidate]);
+    const canvasEl = gl.domElement;
+    let intervalId: number | null = null;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (intervalId === null) {
+            intervalId = window.setInterval(() => invalidate(), 1000 / TARGET_FPS);
+          }
+        } else if (intervalId !== null) {
+          window.clearInterval(intervalId);
+          intervalId = null;
+        }
+      },
+      { rootMargin: "20% 0px" },
+    );
+    observer.observe(canvasEl);
+
+    return () => {
+      observer.disconnect();
+      if (intervalId !== null) window.clearInterval(intervalId);
+    };
+  }, [invalidate, gl]);
 
   return null;
 }
