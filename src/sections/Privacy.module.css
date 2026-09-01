@@ -1,0 +1,133 @@
+/* Largura de leitura controlada (Prompt 11 §56-57) — mais estreita que o
+   Container padrão de propósito: esta seção é uma pausa depois do Álbum,
+   não mais uma vitrine larga de produto. */
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+  max-width: 980px;
+  margin-inline: auto;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  max-width: 52ch;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  letter-spacing: var(--tracking-heading);
+  font-size: var(--text-h1);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-strong);
+  margin: 0;
+}
+
+.copy {
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  line-height: var(--line-height-body);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ---------- Superfície/documento (Prompt 11 §25) ---------- */
+.surface {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+  background: var(--color-cream-base);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: var(--space-24);
+  will-change: transform, opacity;
+}
+
+.surfaceEyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.pointList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.point {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-block: var(--space-16);
+  border-top: 1px solid var(--color-border);
+}
+
+.point:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.pointTitle {
+  font-family: var(--font-body);
+  font-weight: var(--weight-body-strong);
+  font-size: var(--text-body);
+  color: var(--color-text-strong);
+  margin: 0;
+}
+
+.pointText {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--line-height-body);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-8);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Estado inicial "escondido" só com motion liberado — evita flash de
+   conteúdo visível antes do GSAP assumir (mesmo padrão de Album/Agenda). */
+@media (prefers-reduced-motion: no-preference) {
+  .intro,
+  .surface {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    align-items: start;
+    gap: var(--space-64);
+  }
+
+  .intro {
+    max-width: none;
+    padding-top: var(--space-8);
+  }
+
+  .links {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-24);
+    border-top: none;
+    padding-top: var(--space-16);
+  }
+}
