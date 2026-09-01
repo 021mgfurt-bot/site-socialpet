@@ -93,7 +93,7 @@ export function Expenses() {
             <h2 className={styles.headline}>Ração, consulta, banho, remédio. Quanto isso deu no mês?</h2>
             <p className={styles.copy}>
               Cada gasto fica registrado no pet certo, com categoria, data e valor. No fim do mês, o
-              SocialPet reúne tudo num relatório — pronto pra consultar quando você quiser entender para
+              SocialPet reúne tudo num relatório, pronto pra consultar quando você quiser entender para
               onde o dinheiro foi.
             </p>
           </div>
@@ -200,7 +200,7 @@ function ReportSheet({ total, count, pets }: ReportSheetProps) {
   return (
     <div className={styles.sheet}>
       <div className={styles.sheetHeader}>
-        <span className={styles.sheetEyebrow}>SocialPet — Relatório de despesas</span>
+        <span className={styles.sheetEyebrow}>SocialPet · Relatório de despesas</span>
         <h3 className={styles.sheetTitle}>Relatório de despesas</h3>
         <p className={styles.sheetMeta}>
           Período: {EXPENSE_DEMO_PERIOD_LABEL} · Pets incluídos: Mel, Thor

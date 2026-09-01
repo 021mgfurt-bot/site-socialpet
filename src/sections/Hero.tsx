@@ -77,8 +77,8 @@ export function Hero() {
             </h1>
 
             <p ref={copyRef} className={styles.copy}>
-              Vacinas, despesas, agenda e memórias reunidas em um só lugar, para você cuidar com mais
-              clareza no dia a dia.
+              Vacinas, despesas, agenda e memórias de cada pet, guardadas num só lugar para você
+              consultar sempre que precisar.
             </p>
 
             <div ref={ctasRef} className={styles.ctas}>
