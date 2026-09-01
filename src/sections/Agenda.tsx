@@ -1,6 +1,9 @@
 import { useEffect, useRef } from "react";
 import { Section } from "../components/layout/Section";
 import { Container } from "../components/ui/Container";
+import { DeviceMockup } from "../components/ui/DeviceMockup";
+import { ProductVideo } from "../components/media/ProductVideo";
+import { MockupPlaceholder } from "../components/media/MockupPlaceholder";
 import { TODAY_OCCURRENCES, REMINDER_DEMO_RECORDS } from "../data/reminderDemoRecords";
 import {
   sortTodayOccurrences,
@@ -37,6 +40,7 @@ export function Agenda() {
   const nextRef = useRef<HTMLDivElement>(null);
   const firstDoneMarkerRef = useRef<HTMLSpanElement>(null);
   const firstDoneLabelRef = useRef<HTMLSpanElement>(null);
+  const phoneRef = useRef<HTMLDivElement>(null);
 
   const todayEvents = sortTodayOccurrences(TODAY_OCCURRENCES);
   const firstDoneIndex = todayEvents.findIndex((event) => event.done);
@@ -46,7 +50,13 @@ export function Agenda() {
 
     if (reducedMotion) {
       gsap.set(
-        [railFillRef.current, ...todayEventEls, recurrenceRef.current, nextRef.current].filter(Boolean),
+        [
+          railFillRef.current,
+          ...todayEventEls,
+          recurrenceRef.current,
+          nextRef.current,
+          phoneRef.current,
+        ].filter(Boolean),
         { opacity: 1, x: 0, y: 0, scale: 1 },
       );
       if (railFillRef.current) gsap.set(railFillRef.current, { scaleY: 1 });
@@ -61,6 +71,7 @@ export function Agenda() {
       todayEvents: todayEventEls,
       recurrence: recurrenceRef.current,
       next: nextRef.current,
+      phone: phoneRef.current,
     });
 
     const cleanupCompletion = playAgendaCompletion({
@@ -148,6 +159,15 @@ export function Agenda() {
               <p className={styles.nextWhen}>
                 {nextWeekdayLabel(5)} · {formatTime(NEXT_APPOINTMENT.times[0])}
               </p>
+            </div>
+
+            <div ref={phoneRef} className={styles.phoneBlock}>
+              <DeviceMockup
+                label="Tela real da agenda do SocialPet, na conta de demonstração"
+                className={styles.phoneMockup}
+              >
+                <ProductVideo poster="/product-demos/agenda/agenda-screen-mobile.png" fallback={<MockupPlaceholder />} />
+              </DeviceMockup>
             </div>
           </div>
         </div>

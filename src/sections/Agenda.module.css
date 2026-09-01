@@ -194,6 +194,19 @@
   margin: 0;
 }
 
+/* Prova de produto no estágio final — pequena, depois de toda a timeline
+   editorial (Prompt 10.7 §46: "timeline explica, app confirma"). */
+.phoneBlock {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--space-16);
+  will-change: transform, opacity;
+}
+
+.phoneMockup {
+  --frame-width: 150px;
+}
+
 /* Estado inicial "escondido" só com motion liberado (Prompt 9 §61). */
 @media (prefers-reduced-motion: no-preference) {
   .railFill {
@@ -202,7 +215,8 @@
 
   .event,
   .recurrenceBlock,
-  .nextBlock {
+  .nextBlock,
+  .phoneBlock {
     opacity: 0;
   }
 

@@ -6,6 +6,7 @@ export interface AgendaTimelineTargets {
   todayEvents: HTMLElement[];
   recurrence: HTMLElement | null;
   next: HTMLElement | null;
+  phone: HTMLElement | null;
 }
 
 /**
@@ -17,7 +18,7 @@ export interface AgendaTimelineTargets {
  * "próximo compromisso" revelam em sequência. Sem pin (Prompt 9 §36/§37).
  */
 export function playAgendaEntrance(targets: AgendaTimelineTargets): () => void {
-  const { rail, railFill, todayEvents, recurrence, next } = targets;
+  const { rail, railFill, todayEvents, recurrence, next, phone } = targets;
   if (!rail) return () => {};
 
   ensureScrollTriggerRegistered();
@@ -49,6 +50,10 @@ export function playAgendaEntrance(targets: AgendaTimelineTargets): () => void {
 
   if (next) {
     tl.fromTo(next, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.85);
+  }
+
+  if (phone) {
+    tl.fromTo(phone, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 1.1);
   }
 
   return () => {
