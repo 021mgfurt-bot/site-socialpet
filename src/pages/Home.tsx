@@ -8,6 +8,7 @@ import { Expenses } from "../sections/Expenses";
 import { Agenda } from "../sections/Agenda";
 import { Album } from "../sections/Album";
 import { Privacy } from "../sections/Privacy";
+import { Plans } from "../sections/Plans";
 import { PlaceholderSection } from "../sections/PlaceholderSection";
 import { HOME_SECTIONS } from "../data/homeSections";
 import { useReducedMotion } from "../hooks/useReducedMotion";
@@ -36,6 +37,7 @@ export function Home() {
       <Agenda />
       <Album />
       <Privacy />
+      <Plans />
       {HOME_SECTIONS.map((section) => (
         <PlaceholderSection key={section.id} id={section.id} title={section.title} tone={section.tone} />
       ))}
