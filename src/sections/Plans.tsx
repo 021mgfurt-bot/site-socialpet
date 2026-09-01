@@ -9,9 +9,12 @@ import styles from "./Plans.module.css";
 
 /**
  * Teaser curto de Planos na Home (Prompt 12) — não duplica `/planos`, só
- * aponta pra ela. Substitui o placeholder estrutural "planos" que existia
+ * aponta pra ela. Substituiu o placeholder estrutural "planos" que existia
  * em `HOME_SECTIONS` (mesmo padrão do que aconteceu com "privacidade" no
- * Prompt 11).
+ * Prompt 11). `HOME_SECTIONS`/`PlaceholderSection` foram removidos no
+ * Prompt 13, quando os últimos placeholders ("pwa", redundante com
+ * Install Spotlight; "faq" e "cta", implementados de verdade) deixaram de
+ * existir.
  *
  * Auditoria do Prompt 12 confirmou: nenhum plano, preço, checkout ou
  * assinatura recorrente existe no produto real hoje; criar conta não

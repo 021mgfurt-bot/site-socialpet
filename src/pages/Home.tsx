@@ -9,8 +9,8 @@ import { Agenda } from "../sections/Agenda";
 import { Album } from "../sections/Album";
 import { Privacy } from "../sections/Privacy";
 import { Plans } from "../sections/Plans";
-import { PlaceholderSection } from "../sections/PlaceholderSection";
-import { HOME_SECTIONS } from "../data/homeSections";
+import { Faq } from "../sections/Faq";
+import { CtaFinal } from "../sections/CtaFinal";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { scrollToSection } from "../lib/scrollToSection";
 
@@ -38,9 +38,8 @@ export function Home() {
       <Album />
       <Privacy />
       <Plans />
-      {HOME_SECTIONS.map((section) => (
-        <PlaceholderSection key={section.id} id={section.id} title={section.title} tone={section.tone} />
-      ))}
+      <Faq />
+      <CtaFinal />
     </>
   );
 }
