@@ -1,0 +1,350 @@
+/* Tons derivados da paleta existente, só pra diferenciar categorias —
+   nunca uma paleta arco-íris (Prompt 8 §26). Escopados ao layout desta
+   seção, não em tokens.css: são um mapeamento local, não um novo papel
+   semântico site-wide. */
+.layout {
+  --expense-tone-coral: var(--color-coral);
+  --expense-tone-coralDark: var(--color-coral-dark);
+  --expense-tone-coralDeep: var(--color-coral-deep);
+  --expense-tone-sandDeep: var(--color-sand-deep);
+  --expense-tone-sage: var(--color-sage);
+  --expense-tone-inkDeep: var(--color-ink-deep);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-48);
+}
+
+.stickyText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  max-width: 640px;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  letter-spacing: var(--tracking-heading);
+  font-size: var(--text-h1);
+  line-height: var(--line-height-heading);
+  color: var(--color-text-strong);
+  margin: 0;
+}
+
+.copy {
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  line-height: var(--line-height-body);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.stages {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-96);
+}
+
+/* ---------- Estágio 1: lançamentos ---------- */
+.fragmentsStage {
+  will-change: transform, opacity;
+}
+
+.fragmentList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-32);
+}
+
+.fragment {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transform: rotate(var(--frag-rotate, 0deg));
+}
+
+.fragmentCategory {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+}
+
+.fragmentAmount {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  letter-spacing: var(--tracking-heading);
+  font-size: clamp(1.5rem, 1.3rem + 1.2vw, 2.25rem);
+  color: var(--color-text-strong);
+}
+
+/* ---------- Estágio 2: total ---------- */
+.totalStage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-8);
+  padding-block: var(--space-32);
+  will-change: transform, opacity;
+}
+
+.totalPeriod {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-coral-deep);
+}
+
+.totalValue {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: var(--tracking-display);
+  font-size: clamp(2.75rem, 2.2rem + 3vw, 4.5rem);
+  line-height: 1;
+  color: var(--color-text-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.totalLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  color: var(--color-text-muted);
+}
+
+.totalByPet {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  color: var(--color-text-muted);
+  margin: var(--space-8) 0 0;
+}
+
+/* ---------- Estágio 3: categorias ---------- */
+.categoriesStage {
+  will-change: transform, opacity;
+}
+
+.stageTitle {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-h3);
+  color: var(--color-text-strong);
+  margin: 0 0 var(--space-24);
+}
+
+.compositeBar {
+  display: flex;
+  width: 100%;
+  height: 14px;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  background: var(--color-line);
+  margin-bottom: var(--space-24);
+}
+
+.barSegment {
+  height: 100%;
+}
+
+.categoryLegend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.categoryLegendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+}
+
+.categorySwatch {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.categoryName {
+  flex: 1;
+  color: var(--color-text);
+}
+
+.categoryValue {
+  color: var(--color-text-strong);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.categoryPercentage {
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+/* ---------- Estágio 4: relatório ---------- */
+.reportStage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-16);
+  will-change: transform, opacity;
+}
+
+.sheet {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-cream-base);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lift);
+  padding: var(--space-24);
+}
+
+.sheetHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-bottom: var(--space-16);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-16);
+}
+
+.sheetEyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.sheetTitle {
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-h3);
+  color: var(--color-text-strong);
+  margin: 0;
+}
+
+.sheetMeta {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.sheetSummary {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-16);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-16);
+}
+
+.sheetSummaryTotal {
+  margin-left: auto;
+  font-family: var(--font-display);
+  font-weight: var(--weight-display);
+  font-size: var(--text-h3);
+  color: var(--color-text-strong);
+}
+
+.sheetTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  margin-bottom: var(--space-16);
+}
+
+.sheetTable th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sheetTable td {
+  padding-block: var(--space-8);
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-text);
+}
+
+.sheetTable td:last-child,
+.sheetTable th:last-child {
+  text-align: right;
+}
+
+.sheetFooter {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  text-align: center;
+  margin: 0;
+}
+
+.reportNote {
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: 42ch;
+  margin: 0;
+}
+
+/* Estado inicial "escondido" só existe com motion liberado — com
+   prefers-reduced-motion:reduce o CSS já nasce no estado final,
+   igual ao gsap.set aplicado via JS (Prompt 8 §58). */
+@media (prefers-reduced-motion: no-preference) {
+  .fragmentsStage,
+  .totalStage,
+  .categoriesStage,
+  .reportStage {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-64);
+  }
+
+  .stickyText {
+    position: sticky;
+    top: calc(var(--header-height-desktop) + var(--space-32));
+    flex: 0 0 38%;
+  }
+
+  .stages {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .fragmentList {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-48) var(--space-32);
+  }
+
+  .totalStage {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .sheet {
+    max-width: 480px;
+  }
+}
