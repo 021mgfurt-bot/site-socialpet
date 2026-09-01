@@ -3,6 +3,7 @@ import { Section } from "../components/layout/Section";
 import { Container } from "../components/ui/Container";
 import { DeviceMockup } from "../components/ui/DeviceMockup";
 import { MockupPlaceholder } from "../components/media/MockupPlaceholder";
+import { ProductVideo } from "../components/media/ProductVideo";
 import { VACCINE_DEMO_RECORDS } from "../data/vaccineDemoRecords";
 import { computeVaccineStatus } from "../lib/vaccineStatus";
 import { useReducedMotion } from "../hooks/useReducedMotion";
@@ -16,10 +17,15 @@ const DESKTOP_QUERY = "(min-width: 1024px)";
 
 /**
  * Primeira funcionalidade real apresentada em profundidade (Prompt 7). A
- * tela dentro do mockup continua o placeholder honesto (nenhuma captura
- * real segura disponível ainda — mesma regra do Hero) — o protagonismo
- * fica com os registros de status ao redor, que são dados fictícios mas
- * calculados pela mesma lógica da aplicação real (ver lib/vaccineStatus.ts).
+ * tela dentro do mockup agora mostra uma captura real da conta demo
+ * (Prompt 10.7, `public/product-demos/vaccination/vaccination-screen-mobile.png`,
+ * capturada em resolução mobile real via DevTools) — os 3 estados de
+ * vacina de Mel/Thor, gerados pela lógica real do app, não digitados).
+ * Ainda é imagem estática, não vídeo (ver
+ * docs/product-demo-capture.md para o porquê e como gerar o MP4 depois).
+ * O protagonismo continua com os registros de status ao redor, que são
+ * dados fictícios mas calculados pela mesma lógica da aplicação real (ver
+ * lib/vaccineStatus.ts).
  */
 export function Vaccination() {
   const reducedMotion = useReducedMotion();
@@ -103,8 +109,8 @@ export function Vaccination() {
           </ul>
 
           <div ref={mockupRef} className={styles.mockupWrap}>
-            <DeviceMockup label="Prévia da carteira de vacinação, em preparação" className={styles.mockup}>
-              <MockupPlaceholder />
+            <DeviceMockup label="Tela real de vacinação do SocialPet, na conta de demonstração" className={styles.mockup}>
+              <ProductVideo poster="/product-demos/vaccination/vaccination-screen-mobile.png" fallback={<MockupPlaceholder />} />
             </DeviceMockup>
           </div>
         </div>
