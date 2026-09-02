@@ -12,6 +12,7 @@ export function Termos() {
     <LegalPageLayout
       title="Termos de Uso"
       summary="As regras de uso deste site institucional, e a diferença entre navegar aqui e usar o aplicativo SocialPet."
+      path="/termos"
       toc={TOC}
     >
       <section id="sobre-o-site">

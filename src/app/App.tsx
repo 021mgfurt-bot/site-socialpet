@@ -6,6 +6,7 @@ import { Privacidade } from "../pages/legal/Privacidade";
 import { Cookies } from "../pages/legal/Cookies";
 import { Termos } from "../pages/legal/Termos";
 import { Contato } from "../pages/legal/Contato";
+import { NotFound } from "../pages/NotFound";
 import { ScrollToTop } from "./ScrollToTop";
 
 export function App() {
@@ -21,6 +22,7 @@ export function App() {
         <Route path="cookies" element={<Cookies />} />
         <Route path="termos" element={<Termos />} />
         <Route path="contato" element={<Contato />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

@@ -12,6 +12,14 @@ dist
 dist-ssr
 *.local
 
+# Variáveis de ambiente locais — nunca versionar, mesmo que hoje nenhuma
+# contenha segredo (Prompt 15 §19). .env.example continua rastreado de
+# propósito, é só placeholder público.
+.env
+.env.local
+.env.*.local
+.env.production
+
 # Artefatos de QA (screenshots automatizadas) — não fazem parte do site
 qa/screenshots
 

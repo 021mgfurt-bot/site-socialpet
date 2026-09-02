@@ -4,7 +4,7 @@ import { chromium } from "playwright";
 import AxeBuilder from "@axe-core/playwright";
 
 const BASE_URL = process.env.QA_BASE_URL ?? "http://localhost:5174";
-const ROUTES = ["/", "/planos", "/privacidade", "/cookies", "/termos", "/contato"];
+const ROUTES = ["/", "/planos", "/privacidade", "/cookies", "/termos", "/contato", "/pagina-que-nao-existe"];
 
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const context = await browser.newContext({ viewport: { width: 1366, height: 900 } });

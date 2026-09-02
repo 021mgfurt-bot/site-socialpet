@@ -5,6 +5,7 @@ import { Button } from "../components/ui/Button";
 import { TextLink } from "../components/ui/TextLink";
 import { signUpUrl, externalAppLinkProps } from "../config/env";
 import { PRICING_STATUS } from "../data/plans";
+import { useDocumentHead } from "../hooks/useDocumentHead";
 import styles from "./Planos.module.css";
 
 /**
@@ -35,11 +36,17 @@ const FAQ = [
   },
   {
     question: "Posso criar uma conta agora?",
-    answer: "Sim, direto no aplicativo — não precisa esperar os planos serem lançados.",
+    answer: "Sim, direto no aplicativo, não precisa esperar os planos serem lançados.",
   },
 ];
 
 export function Planos() {
+  useDocumentHead({
+    title: "Planos | SocialPet",
+    description: "O SocialPet já pode ser usado hoje. Veja o que já está disponível e como anda a definição dos planos pagos.",
+    path: "/planos",
+  });
+
   return (
     <Section id="planos-page" ariaLabel="Planos do SocialPet">
       <Container>

@@ -11,6 +11,7 @@ export function Cookies() {
     <LegalPageLayout
       title="Política de Cookies"
       summary="Explicamos aqui quais cookies este site usa hoje. Se isso mudar, você vai encontrar a atualização nesta mesma página."
+      path="/cookies"
       toc={TOC}
     >
       <section id="estado-atual">

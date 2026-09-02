@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SocialPet — social preview</title>
+    <style>
+      @font-face {
+        font-family: "Inter Variable";
+        src: url("../../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2") format("woff2-variations");
+        font-weight: 100 900;
+        font-display: block;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+
+      body {
+        font-family: "Inter Variable", "Segoe UI", sans-serif;
+        background: linear-gradient(155deg, #fffaf6 0%, #fbf1e8 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 28px;
+      }
+
+      .mark {
+        width: 128px;
+        height: 128px;
+        object-fit: contain;
+      }
+
+      .wordmark {
+        font-size: 76px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: #221c1a;
+        line-height: 1;
+      }
+
+      .tagline {
+        font-size: 34px;
+        font-weight: 400;
+        color: #6f6259;
+        letter-spacing: -0.01em;
+        max-width: 780px;
+        line-height: 1.3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img class="mark" src="../../public/icon-512.png" alt="" />
+      <div class="wordmark">SocialPet</div>
+      <div class="tagline">A vida do seu pet, organizada com cuidado.</div>
+    </div>
+  </body>
+</html>

@@ -34,8 +34,11 @@
       content="Vacinas, despesas, agenda e memórias de cada pet reunidas em um só lugar."
     />
     <meta property="og:locale" content="pt_BR" />
-    <!-- PENDÊNCIA: sem imagem social (og:image) definitiva ainda — nenhuma
-         imagem foi inventada para preencher o espaço, ver Prompt 1 §33/38. -->
+    <!-- og:image/og:image:width/og:image:height/twitter:image (1200x630,
+         public/og-image.png, gerado por qa/og-image/generate.mjs a partir
+         de qa/og-image/template.html) são injetados em build time por
+         vite.seo.plugin.ts, junto com canonical/og:url — só com URL
+         absoluta quando VITE_SITE_URL existe (Prompt 14 §44-47). -->
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="SocialPet — a vida do seu pet, organizada com cuidado" />

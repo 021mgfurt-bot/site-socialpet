@@ -4,11 +4,17 @@ import { Footer } from "../../components/layout/Footer";
 import { Container } from "../../components/ui/Container";
 import { TextLink } from "../../components/ui/TextLink";
 import { useRobotsMeta } from "../../hooks/useRobotsMeta";
+import { useDocumentHead } from "../../hooks/useDocumentHead";
 import styles from "./LegalPageLayout.module.css";
 
 interface LegalPageLayoutProps {
   title: string;
   summary: string;
+  /** Caminho da rota, ex.: "/privacidade" — usado só pro title/description
+   * por rota (Prompt 14); o canonical real de uma página noindex não
+   * importa pra indexação, mas manter os dois em sincronia evita um
+   * `<title>` desatualizado na aba do navegador. */
+  path: string;
   toc?: { id: string; label: string }[];
   /**
    * Enquanto `false` (padrão), a página mostra o aviso "CONTEÚDO EM
@@ -22,8 +28,9 @@ interface LegalPageLayoutProps {
   children: ReactNode;
 }
 
-export function LegalPageLayout({ title, summary, toc, reviewed = false, children }: LegalPageLayoutProps) {
+export function LegalPageLayout({ title, summary, path, toc, reviewed = false, children }: LegalPageLayoutProps) {
   useRobotsMeta(reviewed ? "index, follow" : "noindex, nofollow");
+  useDocumentHead({ title: `${title} | SocialPet`, description: summary, path });
 
   return (
     <>

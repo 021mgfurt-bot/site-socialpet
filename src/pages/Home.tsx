@@ -12,11 +12,18 @@ import { Plans } from "../sections/Plans";
 import { Faq } from "../sections/Faq";
 import { CtaFinal } from "../sections/CtaFinal";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { useDocumentHead } from "../hooks/useDocumentHead";
 import { scrollToSection } from "../lib/scrollToSection";
 
 export function Home() {
   const location = useLocation();
   const reducedMotion = useReducedMotion();
+
+  useDocumentHead({
+    title: "SocialPet — a vida do seu pet, organizada com cuidado",
+    description: "Vacinas, despesas, agenda e memórias de cada pet reunidas em um só lugar. Conheça o SocialPet.",
+    path: "/",
+  });
 
   useEffect(() => {
     if (!location.hash) return;

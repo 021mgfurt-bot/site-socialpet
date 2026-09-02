@@ -12,6 +12,7 @@ export function Privacidade() {
     <LegalPageLayout
       title="Política de Privacidade"
       summary="Aqui vai explicar, em português simples, o que o SocialPet coleta sobre você e sobre seus pets, para que serve e como você pode saber mais."
+      path="/privacidade"
       toc={TOC}
     >
       <section id="quais-dados">

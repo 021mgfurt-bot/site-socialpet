@@ -5,6 +5,7 @@ export function Contato() {
     <LegalPageLayout
       title="Contato"
       summary="O canal oficial de contato do SocialPet ainda está sendo definido. Assim que existir, ele aparece aqui."
+      path="/contato"
     >
       <section>
         <h2>Por enquanto</h2>

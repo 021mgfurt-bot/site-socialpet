@@ -55,6 +55,14 @@
   line-height: var(--line-height-display);
   letter-spacing: var(--tracking-display);
   color: var(--color-text-strong);
+  /* Sem isso, o <br/> que força "organizada com cuidado." pra uma segunda
+     linha faz o item de flex (align-items: center, sem stretch) medir a
+     largura dessa linha via max-content e ignorar a largura disponível do
+     .textBlock — a segunda linha cortava dos dois lados em ~320-390px
+     mesmo sem overflow horizontal na página (achado real em QA visual,
+     Prompt 14). max-width:100% força o item a nunca passar da largura do
+     pai, permitindo o wrap normal por espaço dentro da própria linha. */
+  max-width: 100%;
 }
 
 .copy {

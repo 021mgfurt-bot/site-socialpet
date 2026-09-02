@@ -73,7 +73,7 @@ export function Hero() {
             <h1 ref={headlineRef} className={styles.headline}>
               A vida do seu pet,
               <br />
-              organizada{" "}com{" "}cuidado.
+              organizada com cuidado.
             </h1>
 
             <p ref={copyRef} className={styles.copy}>
