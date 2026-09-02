@@ -4,7 +4,11 @@
    CSS do Álbum (Prompt 10.7): a ordem de injeção de dois CSS Modules no
    bundle não é garantida. */
 .section.section {
-  background: linear-gradient(160deg, var(--color-coral-deep) 0%, var(--color-ink-deep) 100%);
+  /* Prompt 15.2: era coral-deep → ink-deep (o app não tem superfície
+     escura, ink-deep era um tom inventado quase preto). Agora os dois
+     stops ficam dentro da família coral real do app — mais escuro só o
+     necessário pra manter o fechamento marcante da Home. */
+  background: linear-gradient(160deg, var(--color-coral-deep) 0%, var(--color-coral-deepest) 100%);
   color: var(--color-cream-base);
 }
 

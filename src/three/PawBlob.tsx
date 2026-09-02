@@ -92,7 +92,10 @@ export function PawBlob({ pointer }: PawBlobProps) {
   return (
     <group ref={groupRef} rotation={[0.05, -0.35, 0]}>
       <mesh geometry={geometry}>
-        <meshStandardMaterial color="#c9603b" roughness={0.92} metalness={0} />
+        {/* Prompt 15.2: era #c9603b (mais escuro/acastanhado que o coral
+            real do app) — agora usa o mesmo #f57c55 do --primary/
+            --color-coral, a cor de marca de verdade. */}
+        <meshStandardMaterial color="#f57c55" roughness={0.92} metalness={0} />
       </mesh>
     </group>
   );

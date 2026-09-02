@@ -5,7 +5,9 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  background: rgba(34, 28, 26, 0.4);
+  /* rgb(50,43,41) = --color-ink (Prompt 15.2: era rgba(34,28,26,...), o
+     rgb do antigo --color-ink-deep inventado, hardcoded). */
+  background: rgba(50, 43, 41, 0.4);
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--motion-base) var(--ease-enter);

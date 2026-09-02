@@ -11,9 +11,12 @@
   border-radius: calc(var(--frame-width, 300px) * 0.16);
   padding: calc(var(--frame-width, 300px) * 0.022);
   background: linear-gradient(155deg, #3a3a3d 0%, #1c1c1f 45%, #0f0f11 100%);
+  /* rgb(77,49,37) = mesmo tom quente de sombra do app real e de
+     --shadow-soft/--shadow-lift (Prompt 15.2: era rgb(50,43,41), o rgb do
+     --color-ink puro, mais frio que a sombra real do app). */
   box-shadow:
-    0 30px 60px -18px rgba(50, 43, 41, 0.35),
-    0 10px 24px -8px rgba(50, 43, 41, 0.2),
+    0 30px 60px -18px rgba(77, 49, 37, 0.35),
+    0 10px 24px -8px rgba(77, 49, 37, 0.2),
     inset 0 1px 1px rgba(255, 255, 255, 0.16),
     inset 0 -1px 1px rgba(0, 0, 0, 0.4);
   display: flex;

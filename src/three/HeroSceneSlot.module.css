@@ -13,11 +13,16 @@
   position: absolute;
   inset: 10%;
   border-radius: 48% 52% 55% 45% / 50% 45% 55% 50%;
+  /* Prompt 15.2: os stops do meio/fora eram tons acastanhados não
+     derivados da paleta real (o externo era literalmente o antigo
+     --color-coral-deep inventado, #a8451f, hardcoded) — agora usam o
+     coral e o coral-deep reais, coerentes com a escultura 3D real
+     (PawBlob.tsx) que este blob substitui enquanto carrega. */
   background: radial-gradient(
     circle at 32% 30%,
     rgba(255, 217, 184, 0.9),
-    rgba(217, 102, 63, 0.55) 45%,
-    rgba(168, 69, 31, 0.25) 75%,
+    rgba(245, 124, 85, 0.55) 45%,
+    rgba(189, 70, 35, 0.25) 75%,
     transparent 100%
   );
   filter: blur(1px);

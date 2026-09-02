@@ -12,10 +12,12 @@ import styles from "./CtaFinal.module.css";
  * antes do Footer. Visualmente parente do Install Spotlight (mesma
  * família cromática, coral/terracotta) mas não duplicata: aqui a
  * superfície é a própria seção (full-bleed, sem cartão arredondado
- * contido no Container) e o gradiente vai até --color-ink-deep, mais
- * dramático, porque essa é a resposta a uma pergunta diferente — Install
- * Spotlight resolve "como deixo fácil de acessar", este bloco resolve
- * "quero começar a usar" (Prompt 13 §49).
+ * contido no Container) e o gradiente vai até --color-coral-deepest
+ * (Prompt 15.2 — antes ia até --color-ink-deep, um tom quase preto que
+ * não existe no app real), mais dramático que Install Spotlight, porque
+ * essa é a resposta a uma pergunta diferente — Install Spotlight resolve
+ * "como deixo fácil de acessar", este bloco resolve "quero começar a
+ * usar" (Prompt 13 §49).
  *
  * Sem preço, sem "grátis", sem trial, sem urgência — o cadastro de hoje
  * não passa por cobrança, mas isso não foi definido comercialmente como

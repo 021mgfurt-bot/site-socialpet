@@ -6,7 +6,9 @@
   gap: var(--space-24);
   padding: var(--space-32) var(--space-24);
   border-radius: var(--radius-lg);
-  background: linear-gradient(155deg, var(--color-coral-deep) 0%, #8f3a19 100%);
+  /* Prompt 15.2: #8f3a19 era hardcoded, mais escuro que o necessário — trocado
+     pelo token compartilhado (mesmo stop final do gradiente do CTA Final). */
+  background: linear-gradient(155deg, var(--color-coral-deep) 0%, var(--color-coral-deepest) 100%);
   color: var(--color-cream-base);
   box-shadow: var(--shadow-soft);
 }

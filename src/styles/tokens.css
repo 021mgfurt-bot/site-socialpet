@@ -3,6 +3,30 @@
   Fonte: Wireframe & Visual System (Prompt 3) e Blueprint Estratégico (Prompt 2).
   Paleta base herdada da aplicação real; tokens marcados "extensão" são novos,
   propostos para o site e ainda não usados no produto.
+
+  Revisão de paleta (Prompt 15.2): auditoria direta em
+  `apppetshop/legacy/styles.css` (`:root`) encontrou o site usando dois
+  tons que NUNCA existiram no app — `--color-coral-deep: #a8451f` e
+  `--color-ink-deep: #221c1a`, ambos inventados nos primeiros prompts do
+  site e usados como cor de fundo do CTA principal, texto forte de TODA
+  headline do site e superfície do Footer/CTA Final. É a causa raiz do
+  site parecer "mais escuro/terracotta profundo" que o app real.
+
+  Valores do app real confirmados nesta rodada (`:root` de
+  legacy/styles.css, app read-only): --primary:#f57c55,
+  --primary-dark:#d95934, --primary-soft:#fff0e9, --ink:#322b29,
+  --muted:#7b6e69, --line:#eadbd4, --surface:#ffffff,
+  --background:#fffaf6, --shadow: rgba(77,49,37,...). O app não tem
+  NENHUM tom mais escuro que --ink usado como superfície em lugar
+  nenhum — dark-como-fundo é uma invenção só do site.
+
+  --color-coral-deep e o novo --color-coral-deepest continuam existindo
+  (o app usa branco sobre coral no botão primário: contraste ~2.6-3.9:1,
+  abaixo de AA pra texto pequeno — não posso copiar isso literalmente sem
+  regredir acessibilidade). Os dois são derivados do MESMO matiz/saturação
+  do --primary-dark real (hue ~13.4°), só escurecidos o mínimo necessário
+  pra bater 4.5:1 com texto branco/cream — nunca um tom acastanhado/vinho
+  como o #a8451f antigo.
 */
 
 :root {
@@ -11,17 +35,40 @@
   --color-coral: #f57c55;
   --color-coral-dark: #d95934;
   --color-ink: #322b29;
-  --color-muted: #6f6259;
+  /* Corrigido de #6f6259 em direção ao valor real do app (--muted:
+     #7b6e69) — mas #7b6e69 puro cai pra 4.41:1 contra --color-cream-paper
+     (o app testa contraste só contra --surface branco, mais claro que o
+     cream-paper do site). #756964 é a mesma cor, ~2 pontos de lightness
+     mais escura, o mínimo pra manter AA nos dois fundos (medido: 4.76:1
+     cream-paper, 5.11:1 cream-base) — achado real de QA, Prompt 15.2. */
+  --color-muted: #756964;
   --color-line: #eadbd4;
 
   /* ---------- Cor: extensões propostas para o site ---------- */
+  /* Já muito próximo de --primary-soft (#fff0e9) do app — extensão
+     discreta só pra alternância de seção, não usada pelo app como token
+     nomeado mas visualmente da mesma família. */
   --color-cream-paper: #fbf1e8;
-  --color-coral-deep: #a8451f;
-  --color-ink-deep: #221c1a;
+  /* Corrigido de #a8451f (inventado) — ver nota acima. */
+  --color-coral-deep: #bd4623;
+  /* Novo — só usado nos 2 gradientes full-bleed (Install Spotlight, CTA
+     Final) como segundo stop, e no hover do botão primário. Mesmo matiz
+     do --color-coral-dark real, mais escuro só o suficiente pra dar
+     profundidade sem sair da família coral. */
+  --color-coral-deepest: #92361b;
+  /* Corrigido de #221c1a (inventado, quase preto). O app só tem UM tom
+     escuro (--ink) — nunca usa nada mais escuro que isso como superfície
+     ou texto. Alias intencional, não uma cor nova. */
+  --color-ink-deep: var(--color-ink);
   --color-sage: #7c8266;
   --color-sand-deep: #c9ac8c;
 
-  /* ---------- Cor: estado (herdado do app) ---------- */
+  /* ---------- Cor: estado ---------- */
+  /* Mantidos nos valores atuais do site, não os do app: os reais do app
+     (--success:#2f8f5b, --warning:#ad6b00) ficam abaixo de 4.5:1 como
+     texto pequeno sobre --color-cream-base (3.89:1 e 4.15:1, medido) —
+     copiá-los regrediria acessibilidade sem ganho visual perceptível
+     (uso é pontual, só em rótulos de status de vacina). */
   --color-success: #217049;
   --color-warning: #8f5700;
   --color-danger: #aa3e3e;
@@ -35,9 +82,11 @@
   --color-border: var(--color-line);
 
   /* CTA primário: fill escuro + texto claro garante contraste AA.
-     Nunca usar --color-coral puro como fundo com texto claro por cima. */
+     Nunca usar --color-coral puro como fundo com texto claro por cima —
+     mesma decisão do app (que aceita ~2.6-3.9:1 no próprio botão
+     primário), só que o site mantém AA de verdade. */
   --color-cta-bg: var(--color-coral-deep);
-  --color-cta-bg-hover: #8f3a19;
+  --color-cta-bg-hover: var(--color-coral-deepest);
   --color-cta-text: var(--color-cream-base);
 
   --color-focus-ring: rgba(245, 124, 85, 0.55);
@@ -121,8 +170,11 @@
   --radius-md: 16px;
   --radius-sm: 10px;
 
-  --shadow-soft: 0 18px 46px rgba(50, 43, 41, 0.12);
-  --shadow-lift: 0 10px 22px rgba(50, 43, 41, 0.14);
+  /* rgba(77,49,37,...) é o tom exato de sombra do app real (--shadow em
+     legacy/styles.css e a sombra de hover de botão), não o rgb de --ink
+     (50,43,41) que o site usava antes — sutil, mas mais quente/fiel. */
+  --shadow-soft: 0 18px 46px rgba(77, 49, 37, 0.12);
+  --shadow-lift: 0 10px 22px rgba(77, 49, 37, 0.14);
 
   /* ---------- Motion ---------- */
   --motion-fast: 200ms;
